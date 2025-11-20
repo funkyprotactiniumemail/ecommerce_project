@@ -1,0 +1,40 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<h1 style="text-align:center; margin-bottom:20px;">Products</h1>
+
+{% if products %}
+<form method="GET" action="{% url 'products:product_list' %}">
+    <input type="text" name="q" placeholder="Search products..." value="{{ request.GET.q }}">
+    <button type="submit">Search</button>
+</form>
+<p style="text-align:center; margin-bottom:10px;">
+    Found {{ products.count }} product{{ products.count|pluralize }}
+</p>
+<ul style="text-align:center;">
+    {% for product in products %}
+        <li>{{ product.name }}</li>
+    {% endfor %}
+</ul>
+<div class="product-grid">
+    {% for product in products %}
+    <div class="product-card">
+        <a href="{% url 'products:product_detail' product.id %}">
+            {% if product.images.all %}
+            <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
+            {% else %}
+            <div class="no-image">No Image</div>
+            {% endif %}
+            <h3>{{ product.name }}</h3>
+        </a>
+        <p>${{ product.price }}</p>
+        <a class="add-to-cart-btn" href="{% url 'cart:add_to_cart' product.id %}">Add to Cart</a>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p style="text-align:center;">No products available.</p>
+{% endif %}
+{% endblock %}

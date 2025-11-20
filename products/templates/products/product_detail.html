@@ -1,0 +1,21 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+<div class="product-detail-container">
+    <div class="product-images">
+        {% if product.images.all %}
+            <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
+        {% else %}
+            <div class="no-image">No Image Available</div>
+        {% endif %}
+    </div>
+    <div class="product-info">
+        <h1>{{ product.name }}</h1>
+        <p class="price">${{ product.price }}</p>
+        <p class="description">{{ product.description }}</p>
+        <a class="add-to-cart-btn" href="{% url 'cart:add_to_cart' product.id %}">Add to Cart</a>
+    </div>
+</div>
+{% endblock %}

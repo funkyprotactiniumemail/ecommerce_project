@@ -1,0 +1,21 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+<h1 style="text-align:center; margin-bottom:20px;">Sign Up</h1>
+
+<form method="post" style="max-width:400px; margin:auto;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" style="display:block; margin-top:10px;">Sign Up</button>
+</form>
+
+{% if form.errors %}
+    <div style="color: red; text-align:center; margin-top:10px;">
+        <p>Please fix the errors below and try again.</p>
+    </div>
+{% endif %}
+
+<p style="text-align:center; margin-top:10px;">
+    Already have an account? <a href="{% url 'accounts:login' %}">Login here</a>
+</p>
+{% endblock %}
