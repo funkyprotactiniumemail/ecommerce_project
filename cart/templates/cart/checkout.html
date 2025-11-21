@@ -11,7 +11,7 @@
 
 <h2>Total: ${{ total }}</h2>
 
-<form method="POST">
+<form method="POST" action="{% url 'cart:checkout_confirm' %}">
     {% csrf_token %}
     <button type="submit">Confirm Purchase</button>
 </form>

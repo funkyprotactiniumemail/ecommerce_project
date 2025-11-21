@@ -49,6 +49,7 @@ urlpatterns = [
     path('products/', include('products.urls')),
     path('cart/', include('cart.urls', namespace='cart')),
     path('', lambda request: redirect('accounts:login')),
+    path('shop/', include('shop.urls')),
 ]
 
 if settings.DEBUG:
@@ -56,4 +57,3 @@ if settings.DEBUG:
 
 
 
-    

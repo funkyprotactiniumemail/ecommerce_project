@@ -1,7 +1,3 @@
-from django.shortcuts import render
-
-# Create your views here.
-
 from django.shortcuts import redirect, render
 from products.models import Product
 
@@ -82,5 +78,9 @@ def checkout_view(request):
         "total": total,
     })
 
-import os
-print(os.path.exists(os.path.join('cart', 'templates', 'cart', 'checkout.html')))
+# import os
+# print(os.path.exists(os.path.join('cart', 'templates', 'cart', 'checkout.html'))) # uncomment if you want to test debugging
+
+def checkout_confirm(request):
+    
+    return render(request, 'cart/checkout_confirm.html')

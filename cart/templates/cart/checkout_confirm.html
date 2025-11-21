@@ -1,0 +1,9 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}Order Confirmed{% endblock %}
+
+{% block content %}
+<h1>Order Confirmed!</h1>
+<p>Your purchase was successful. A receipt has been sent to your email *We are thinking about adding this functionality*.</p>
+<a href="{% url 'products:product_list' %}">Back to Products</a>
+{% endblock %}

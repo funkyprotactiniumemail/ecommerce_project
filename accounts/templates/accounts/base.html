@@ -1,5 +1,5 @@
 {% load static %}
-
+<link rel="stylesheet" href="{% static 'products/style.css' %}">
 
 <!DOCTYPE html>
 
@@ -33,7 +33,9 @@
             <a href="{% url 'products:product_list' %}">Products</a>
             <a href="{% url 'cart:cart_view' %}">Cart</a> 
             <a href="{% url 'cart:checkout' %}">Checkout</a>
+            <a href="{% url 'shop:sell_product' %}">Sell</a>
             <a href="{% url 'accounts:logout_view' %}">Logout</a>
+            
             <span>Welcome, {{ user.username }}</span>
         {% else %}
             <a href="{% url 'accounts:login' %}">Login</a>

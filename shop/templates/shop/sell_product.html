@@ -1,0 +1,15 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}Sell Product{% endblock %}
+
+{% block content %}
+<h1 style="text-align:center;">Sell a Product</h1>
+
+<form method="POST" enctype="multipart/form-data"> 
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Product</button>
+</form>
+{% endblock %}
+
+<!-- Used AI to configure enctype -->
